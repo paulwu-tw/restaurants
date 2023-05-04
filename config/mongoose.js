@@ -11,7 +11,7 @@ const uri = process.env.MONGODB_URI
 
 // database connection
 mongoose.connect(process.env.MONGODB_URI, {
-    dbName: "todo-list",
+    dbName: "restaurants",
     auth: {
         username: user,
         password: password

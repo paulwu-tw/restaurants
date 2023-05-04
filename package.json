@@ -2,8 +2,11 @@
   "name": "restaurants",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node models/seeds/restaurantSeeder.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
