@@ -1,0 +1,30 @@
+<div class="mt-3">
+    <form action="/restaurants/{{restaurant.id}}/edit" method="POST">
+        <div class="row">
+            <div class="col-4 d-flex flex-column" style="width: 200px; font-size: 15.5px; font-weight:bold;">
+                <span class="mb-2">餐廳名稱: </span>
+                <span class="mb-2">餐廳英文名稱: </span>
+                <span class="mb-2">餐廳類別: </span>
+                <span class="mb-2">餐廳地址: </span>
+                <span class="mb-2">餐廳 google map 連結: </span>
+                <span class="mb-2">餐廳電話: </span>
+                <span class="mb-2">餐廳描述: </span>
+                <span class="mb-2">圖片連結: </span>
+            </div>
+            <div class="col-4 d-flex flex-column">
+                <input type="text" name="name" value="{{restaurant.name}}">
+                <input type="text" name="name_en" value="{{restaurant.name_en}}">
+                <input type="text" name="category" value="{{restaurant.category}}">
+                <input type="text" name="location" value="{{restaurant.location}}">
+                <input type="text" name="google_map" value="{{restaurant.google_map}}">
+                <input type="text" name="phone" value="{{restaurant.phone}}">
+                <input type="text" name="description" value="{{restaurant.description}}">
+                <input type="text" name="image" value="{{restaurant.image}}">
+            </div>
+        </div>
+        <div class="mt-3">
+            <button type="submit">Save</button>
+            <a href="/"><button type="button">Back</button></a>
+        </div>
+    </form>
+</div>
