@@ -22,7 +22,21 @@ app.get('/', (req, res) => {
 
 // new a restaurant
 // GET /restaurants/new
+app.get('/restaurants/new', (req, res) => {
+    res.render('new')
+})
+
 // POST /restaurants
+app.post('/restaurants', (req, res) => {
+    const info = req.body
+    restaurantsModel.countDocuments().then(count => {
+        count++
+        info['id'] = count
+        restaurantsModel.create(info)
+            .then(() => res.redirect('/'))
+            .catch(err => console.log(err))
+    })
+})
 
 // show a restaurant detail
 //GET /restaurants/:id
