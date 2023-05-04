@@ -23,7 +23,9 @@ db.once('open', () => {
     // })
 
     restaurantsModel.create(restaurants)
+        .then(() => {
+            console.log("Create seeds done.")
+            db.close()
+        })
         .catch(err => console.log(err))
-
-    console.log("Create seeds done.")
 })
