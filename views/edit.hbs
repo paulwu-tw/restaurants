@@ -1,30 +1,40 @@
-<div class="mt-3">
-    <form action="/restaurants/{{restaurant.id}}/edit" method="POST">
-        <div class="row">
-            <div class="col-4 d-flex flex-column" style="width: 200px; font-size: 15.5px; font-weight:bold;">
-                <span class="mb-2">餐廳名稱: </span>
-                <span class="mb-2">餐廳英文名稱: </span>
-                <span class="mb-2">餐廳類別: </span>
-                <span class="mb-2">餐廳地址: </span>
-                <span class="mb-2">餐廳 google map 連結: </span>
-                <span class="mb-2">餐廳電話: </span>
-                <span class="mb-2">餐廳描述: </span>
-                <span class="mb-2">圖片連結: </span>
-            </div>
-            <div class="col-4 d-flex flex-column">
-                <input type="text" name="name" value="{{restaurant.name}}">
-                <input type="text" name="name_en" value="{{restaurant.name_en}}">
-                <input type="text" name="category" value="{{restaurant.category}}">
-                <input type="text" name="location" value="{{restaurant.location}}">
-                <input type="text" name="google_map" value="{{restaurant.google_map}}">
-                <input type="text" name="phone" value="{{restaurant.phone}}">
-                <input type="text" name="description" value="{{restaurant.description}}">
-                <input type="text" name="image" value="{{restaurant.image}}">
-            </div>
+<div class="mt-3 d-flex justify-content-center">
+    <form action="/restaurants/{{restaurant.id}}?_method=PUT" method="POST">
+        <div class="input-group flex-nowrap mb-1" style="width: 800px;">
+            <span style="width: 175px;" class="input-group-text" id="addon-wrapping">餐廳名稱</span>
+            <input type="text" class="form-control" name="name" value="{{restaurant.name}}">
         </div>
-        <div class="mt-3">
-            <button type="submit">Save</button>
-            <a href="/"><button type="button">Back</button></a>
+        <div class="input-group flex-nowrap mb-1" style="width: 800px;">
+            <span style="width: 175px;" class="input-group-text" id="addon-wrapping">餐廳英文名稱</span>
+            <input type="text" class="form-control" name="name_en" value="{{restaurant.name_en}}">
+        </div>
+        <div class="input-group flex-nowrap mb-1" style="width: 800px;">
+            <span style="width: 175px;" class="input-group-text" id="addon-wrapping">餐廳類別</span>
+            <input type="text" class="form-control" name="category" value="{{restaurant.category}}">
+        </div>
+        <div class="input-group flex-nowrap mb-1" style="width: 800px;">
+            <span style="width: 175px;" class="input-group-text" id="addon-wrapping">餐廳地址</span>
+            <input type="text" class="form-control" name="location" value="{{restaurant.location}}">
+        </div>
+        <div class="input-group flex-nowrap mb-1" style="width: 800px;">
+            <span style="width: 175px;" class="input-group-text" id="addon-wrapping">餐廳google map連結</span>
+            <input type="text" class="form-control" name="google_map" value="{{restaurant.google_map}}">
+        </div>
+        <div class="input-group flex-nowrap mb-1" style="width: 800px;">
+            <span style="width: 175px;" class="input-group-text" id="addon-wrapping">餐廳電話</span>
+            <input type="text" class="form-control" name="phone" value="{{restaurant.phone}}">
+        </div>
+        <div class="input-group flex-nowrap mb-1" style="width: 800px;">
+            <span style="width: 175px;" class="input-group-text" id="addon-wrapping">餐廳描述</span>
+            <input type="text" class="form-control" name="description" value="{{restaurant.description}}">
+        </div>
+        <div class="input-group flex-nowrap mb-1" style="width: 800px;">
+            <span style="width: 175px;" class="input-group-text" id="addon-wrapping">圖片連結</span>
+            <input type="text" class="form-control" name="image" value="{{restaurant.image}}">
+        </div>
+        <div class="mt-3 d-flex justify-content-evenly">
+            <button type="submit" class="btn btn-success">Save</button>
+            <a href="/"><button type="button" class="btn btn-primary">Back</button></a>
         </div>
     </form>
 </div>

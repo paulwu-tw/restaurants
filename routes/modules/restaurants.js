@@ -44,7 +44,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // POST /restaurants/:id/edit
-router.post('/:id/edit', (req, res) => {
+router.put('/:id', (req, res) => {
     const info = req.body
     const id = Number(req.params.id)
     restaurantsModel.updateOne({ id }, info)
@@ -53,7 +53,7 @@ router.post('/:id/edit', (req, res) => {
 
 // delete a restaurant
 // POST /restaurants/:id/delete
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id', (req, res) => {
     const id = Number(req.params.id)
     restaurantsModel.deleteOne({ id })
         .then(() => res.redirect('/'))
