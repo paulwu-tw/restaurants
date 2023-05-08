@@ -16,15 +16,17 @@ router.get('/', (req, res) => {
 
 // search restaurants
 router.get('/search', (req, res) => {
-    const keyword = req.query.keyword
+    const {keyword, sort} = req.query
+    // console.log(sort)
     restaurantsModel.find()
         .lean()
+        .sort(`${sort}`)
         .then(restaurantList => {
             const restaurants = restaurantList.filter(restaurant =>
                 restaurant.name.toLowerCase().includes(keyword.trim().toLowerCase())
                 || restaurant.category.toLowerCase().includes(keyword.trim().toLowerCase()))
 
-            if (restaurants.length) res.render('index', { restaurants, keyword })
+            if (restaurants.length) res.render('index', { restaurants, keyword, sort })
             else res.render('noResult', { keyword })
         })
 })

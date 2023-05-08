@@ -11,15 +11,15 @@
             </div>
         </div>
 
-        {{!-- <div>
+        <div>
             <select class="form-select" aria-label="Sort" name="sort" style="width: 150px;" onchange="this.form.submit()">
-                <option disabled selected>選擇排序方式</option>
-                <option value="name_en">A->Z</option>
-                <option value="name_en">Z->A</option>
-                <option value="rating">評分↓</option>
-                <option value="rating">評分↑</option>
+                <option value="" disabled selected>選擇排序方式</option>
+                <option value="name_en" {{checkSelectValue sort "name_en"}}>A->Z</option>
+                <option value="-name_en" {{checkSelectValue sort "-name_en"}}>Z->A</option>
+                <option value="-rating" {{checkSelectValue sort "-rating"}}>評分↓</option>
+                <option value="rating" {{checkSelectValue sort "rating"}}>評分↑</option>
             </select>
-        </div> --}}
+        </div>
     </div>
 </form>
 
