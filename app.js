@@ -2,7 +2,7 @@ const express = require('express')
 const hbs = require('express-handlebars')
 const routes = require('./routes')
 const methodOverride = require('method-override')
-const helpers = require('./plug/hbs-helper')
+const helpers = require('./plugins/hbs-helper')
 
 // model and db config
 const restaurantsModel = require('./models/restaurants')

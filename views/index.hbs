@@ -12,12 +12,13 @@
         </div>
 
         <div>
-            <select class="form-select" aria-label="Sort" name="sort" style="width: 150px;" onchange="this.form.submit()">
+            <select class="form-select" aria-label="Sort" name="sort" style="width: 150px;"
+                onchange="this.form.submit()">
                 <option value="" disabled selected>選擇排序方式</option>
-                <option value="name_en" {{checkSelectValue sort "name_en"}}>A->Z</option>
-                <option value="-name_en" {{checkSelectValue sort "-name_en"}}>Z->A</option>
-                <option value="-rating" {{checkSelectValue sort "-rating"}}>評分↓</option>
-                <option value="rating" {{checkSelectValue sort "rating"}}>評分↑</option>
+                <option value="name_en" {{checkSelectValue sort "name_en" }}>A->Z</option>
+                <option value="-name_en" {{checkSelectValue sort "-name_en" }}>Z->A</option>
+                <option value="-rating" {{checkSelectValue sort "-rating" }}>評分↓</option>
+                <option value="rating" {{checkSelectValue sort "rating" }}>評分↑</option>
             </select>
         </div>
     </div>
@@ -27,7 +28,7 @@
 <div class="container mt-3">
     <div class="row text-end">
         <div class="col-md-10 col-12 mx-auto">
-            <div class="row row-cols-sm-3">
+            <div class="row row-cols-sm-3" id="panel">
                 {{#each restaurants}}
                 <div class="mb-3">
                     <a href="/restaurants/{{this._id}}" class="text-secondary mb-0">
@@ -58,11 +59,11 @@
                                 Edit
                             </button>
                         </a>
-                        <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST" style="display:inline;">
-                            <button type="submit" class="btn btn-danger delete-restaurant">
+                        {{!-- <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST" style="display:inline;"> --}}
+                            <button type="submit" class="btn btn-danger delete-restaurant" data-id="{{this._id}}">
                                 Delete
                             </button>
-                        </form>
+                        {{!-- </form> --}}
                     </div>
                 </div>
                 {{/each}}

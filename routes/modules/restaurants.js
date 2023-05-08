@@ -7,10 +7,6 @@ const restaurantsModel = require('../../models/restaurants')
 // GET /restaurants/new
 router.get('/new', (req, res) => {
     res.render('new')
-        .catch(err => {
-            console.log(err)
-            res.render('errPage', { errMsg: err.message })
-        })
 })
 
 // POST /restaurants
