@@ -12,6 +12,7 @@ Restaurant list created using node.js, mongodb and framework express.
 - New a restaurant,
 - Edit a restaurant information.
 - Delete a restaurant.
+- Sorting Restaurants by Name or Rating.
 
 ## How to use
 
