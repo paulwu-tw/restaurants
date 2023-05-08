@@ -1,21 +1,27 @@
 <!-- search bar -->
-<div class="container search-bar">
-    <div class="search-bar-outer">
-        <div class="search-bar-inner">
-            <form action="/search">
-                <h4 class="mb-2">尋找餐廳：</h4>
-                <div class="input-group">
-                    <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類"
-                        aria-label="Restaurant Name..." value="{{keyword}}" aria-describedby="search-button">
-                    <div class="input-group-append">
-                        <button class="btn btn-major" type="submit" id="search-button"><i
-                                class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
+<form action="/search" class="mt-3">
+    <div class="d-flex justify-content-evenly">
+        <div class="input-group" style="width: 300px;">
+            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+                value="{{keyword}}" aria-describedby="search-button">
+            <div class="input-group-append">
+                <button class="btn btn-dark" type="submit" id="search-button">
+                    <i class="fas fa-search" style="color: rgba(240, 203, 17, 0.673);"></i>
+                </button>
+            </div>
         </div>
+
+        {{!-- <div>
+            <select class="form-select" aria-label="Sort" name="sort" style="width: 150px;" onchange="this.form.submit()">
+                <option disabled selected>選擇排序方式</option>
+                <option value="name_en">A->Z</option>
+                <option value="name_en">Z->A</option>
+                <option value="rating">評分↓</option>
+                <option value="rating">評分↑</option>
+            </select>
+        </div> --}}
     </div>
-</div>
+</form>
 
 <!-- restaurant list -->
 <div class="container mt-3">
@@ -24,7 +30,7 @@
             <div class="row row-cols-sm-3">
                 {{#each restaurants}}
                 <div class="mb-3">
-                    <a href="/restaurants/{{this.id}}" class="text-secondary mb-0">
+                    <a href="/restaurants/{{this._id}}" class="text-secondary mb-0">
                         <div class="card mb-3">
                             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
                             <div class="card-body p-3">
@@ -42,17 +48,17 @@
                         </div>
                     </a>
                     <div class="d-flex justify-content-end">
-                        <a href="/restaurants/{{this.id}}" class="me-1">
-                            <button type="button" class="btn btn-dark">
+                        <a href="/restaurants/{{this._id}}" class="me-1">
+                            <button type="button" class="btn btn-secondary">
                                 Detail
                             </button>
                         </a>
-                        <a href="/restaurants/{{this.id}}/edit" class="me-1">
-                            <button type="button" class="btn btn-dark">
+                        <a href="/restaurants/{{this._id}}/edit" class="me-1">
+                            <button type="button" class="btn btn-secondary">
                                 Edit
                             </button>
                         </a>
-                        <form action="/restaurants/{{this.id}}?_method=DELETE" method="POST" style="display:inline;">
+                        <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST" style="display:inline;">
                             <button type="submit" class="btn btn-danger delete-restaurant">
                                 Delete
                             </button>

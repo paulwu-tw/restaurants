@@ -7,57 +7,72 @@ const restaurantsModel = require('../../models/restaurants')
 // GET /restaurants/new
 router.get('/new', (req, res) => {
     res.render('new')
+        .catch(err => {
+            console.log(err)
+            res.render('errPage', { errMsg: err.message })
+        })
 })
 
 // POST /restaurants
 router.post('/', (req, res) => {
     const info = req.body
-    restaurantsModel.countDocuments().then(count => {
-        count++
-        info['id'] = count
-        restaurantsModel.create(info)
-            .then(() => res.redirect('/'))
-            .catch(err => console.log(err))
-    })
+    restaurantsModel.create(info)
+        .then(() => res.redirect('/'))
+        .catch(err => {
+            console.log(err)
+            res.render('errPage', { errMsg: err.message })
+        })
 })
 
 // show a restaurant detail
 //GET /restaurants/:id
 router.get('/:id', (req, res) => {
-    const id = Number(req.params.id)
-    restaurantsModel.findOne({ id })
+    const id = req.params.id
+    restaurantsModel.findOne({ _id: id })
         .lean()
         .then(restaurant => res.render('show', { restaurant }))
-        .catch(err => console.log(err))
-
+        .catch(err => {
+            console.log(err)
+            res.render('errPage', { errMsg: err.message })
+        })
 })
 
 // edit a restaurant info
 // GET /restaurants/:id/edit
 router.get('/:id/edit', (req, res) => {
     const info = req.body
-    const id = Number(req.params.id)
-    restaurantsModel.findOne({ id })
+    const id = req.params.id
+    restaurantsModel.findOne({ _id: id })
         .lean()
         .then(restaurant => res.render('edit', { restaurant }))
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            res.render('errPage', { errMsg: err.message })
+        })
 })
 
-// POST /restaurants/:id/edit
+// PUT /restaurants/:id
 router.put('/:id', (req, res) => {
     const info = req.body
-    const id = Number(req.params.id)
-    restaurantsModel.updateOne({ id }, info)
+    const id = req.params.id
+    restaurantsModel.updateOne({ _id: id }, info)
         .then(() => res.redirect(`/restaurants/${id}`))
+        .catch(err => {
+            console.log(err)
+            res.render('errPage', { errMsg: err.message })
+        })
 })
 
 // delete a restaurant
-// POST /restaurants/:id/delete
+// DELETE /restaurants/:id
 router.delete('/:id', (req, res) => {
-    const id = Number(req.params.id)
-    restaurantsModel.deleteOne({ id })
+    const id = req.params.id
+    restaurantsModel.deleteOne({ _id: id })
         .then(() => res.redirect('/'))
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            res.render('errPage', { errMsg: err.message })
+        })
 })
 
 module.exports = router

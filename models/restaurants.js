@@ -2,17 +2,13 @@ const mongoose = require('mongoose')
 const schema = mongoose.Schema
 
 const restaurnatSchema = new schema({
-    id: {
-        type: Number,
-        required: true
-    },
     name: {
         type: String,
         required: true
     },
     name_en: {
         type: String,
-        required: true
+        require: true
     },
     category: {
         type: String,
@@ -31,12 +27,10 @@ const restaurnatSchema = new schema({
         required: true
     },
     google_map: {
-        type: String,
-        required: true
+        type: String
     },
     rating: {
-        type: String,
-        required: true
+        type: Number
     },
     description: {
         type: String,

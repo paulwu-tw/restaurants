@@ -8,7 +8,10 @@ router.get('/', (req, res) => {
     restaurantsModel.find()
         .lean()
         .then((restaurants) => res.render('index', { restaurants }))
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            res.render('errPage', { errMsg: err.message })
+        })
 })
 
 // search restaurants
@@ -22,7 +25,7 @@ router.get('/search', (req, res) => {
                 || restaurant.category.toLowerCase().includes(keyword.trim().toLowerCase()))
 
             if (restaurants.length) res.render('index', { restaurants, keyword })
-            else res.render('error', { keyword })
+            else res.render('noResult', { keyword })
         })
 })
 
