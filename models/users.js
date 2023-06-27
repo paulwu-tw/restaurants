@@ -3,21 +3,21 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     name: {
-        type: String, // 資料型別是字串
-        required: true // 這是個必填欄位
+        type: String, 
+        required: false 
     },
     email: {
-        type: String, // 資料型別是字串
-        required: true, // 這是個必填欄位
-        unique: true // 這是個唯一值
+        type: String, 
+        required: true, 
+        unique: true
     },
     password: {
-        type: String, // 資料型別是字串
-        required: true // 這是個必填欄位
+        type: String, 
+        required: true
     },
     createdAt: {
-        type: Date, // 資料型別是日期
-        default: Date.now // 預設值是當下的時間
+        type: Date, 
+        default: Date.now
     },
     restaurants: [{
         type: Schema.Types.ObjectId,
