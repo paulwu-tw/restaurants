@@ -23,15 +23,17 @@
                 <a class="navbar-brand" href="/">
                     <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
                         width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
-                    我的餐廳清單
+                    {{#if isAuthenticated}} {{user.name}}'s {{/if}} 餐廳清單
                 </a>
             </div>
 
-            <a href="/restaurants/new" class="me-5">
-                    <button type="button" class="btn btn-danger">
-                        Create New Restaurant
-                    </button>
-                </a>
+            
+            {{#if isAuthenticated}}
+            <a class="btn btn-success" href="/restaurants/new">Create New Restaurant</a>
+            <a class="btn btn-danger" href="/users/logout">Logout</a>
+            {{else}}
+            <a class="btn btn-success" href="/users/login">Login</a>
+            {{/if}}
         </nav>
         <div class="banner"></div>
     </header>
