@@ -12,7 +12,9 @@ router.get('/login', (req, res) => {
 // login check
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/users/login'
+    failureRedirect: '/users/login',
+    failureMessage: true,
+    failureFlash: true,
 }));
 
 // register page
@@ -23,11 +25,20 @@ router.get('/register', (req, res) => {
 // register check
 router.post('/register', (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
-
+    const errors = []
+    if (!email || !password || !confirmPassword) {
+        errors.push({ message: 'Email、Password and Confirm Password are required.' })
+    }
+    if (password !== confirmPassword) {
+        errors.push({ message: 'Password and Confirm Password do not match.' })
+    }
+    if (errors.length) {
+        return res.render('register', { errors, name, email, password, confirmPassword })
+    }
     User.findOne({ email }).then(user => {
         if (user) {
-            console.log('User already exists');
-            res.render('register', { name, email, password, confirmPassword });
+            errors.push({ message: 'This email already exists.' })
+            return res.render('register', { errors, name, email, password, confirmPassword });
         }
 
         return bcrypt.genSalt(10)
@@ -45,7 +56,9 @@ router.post('/register', (req, res) => {
 // logout
 router.get('/logout', (req, res) => {
     req.logout(err => {
-        if (err) return next(err);
+        if (err) return next(err)
+
+        req.flash('success_msg', 'You have successfully logged out.')
         res.redirect('/users/login');
     });
 });
