@@ -25,26 +25,26 @@ router.get('/register', (req, res) => {
 // register check
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
+
+  let userName = ""
+  if (name === "") userName = email.split('@')[0]
+  else userName = name
+
   const errors = []
-  if (!email || !password || !confirmPassword) {
-    errors.push({ message: 'Email、Password and Confirm Password are required.' })
-  }
-  if (password !== confirmPassword) {
-    errors.push({ message: 'Password and Confirm Password do not match.' })
-  }
-  if (errors.length) {
-    return res.render('register', { errors, name, email, password, confirmPassword })
-  }
+  if (!email || !password || !confirmPassword) errors.push({ message: 'Email、Password and Confirm Password are required.' })
+  if (password !== confirmPassword) errors.push({ message: 'Password and Confirm Password do not match.' })
+  if (errors.length) return res.render('register', { errors, name: userName, email, password, confirmPassword })
+
   User.findOne({ email }).then(user => {
     if (user) {
       errors.push({ message: 'This email already exists.' })
-      return res.render('register', { errors, name, email, password, confirmPassword })
+      return res.render('register', { errors, name: userName, email, password, confirmPassword })
     }
 
     return bcrypt.genSalt(10)
       .then(salt => bcrypt.hash(password, salt))
       .then(hash => User.create({
-        name,
+        name: userName,
         email,
         password: hash
       }))
