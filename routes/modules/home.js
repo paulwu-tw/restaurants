@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
 
-const restaurantsModel = require('../../models/restaurants')
+const Restaurants = require('../../models/restaurants')
 
 // index page, brose restaurants
 router.get('/', (req, res) => {
-    restaurantsModel.find()
+    const userId = req.user._id
+    Restaurants.find({ userId })
         .lean()
         .then((restaurants) => res.render('index', { restaurants }))
         .catch(err => {
@@ -16,9 +17,10 @@ router.get('/', (req, res) => {
 
 // search restaurants
 router.get('/search', (req, res) => {
-    const {keyword, sort} = req.query
+    const userId = req.user._id
+    const { keyword, sort } = req.query
     // console.log(sort)
-    restaurantsModel.find()
+    Restaurants.find({ userId })
         .lean()
         .sort(`${sort}`)
         .then(restaurantList => {

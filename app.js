@@ -8,7 +8,6 @@ const flash = require('connect-flash')
 const helpers = require('./plugins/hbs-helper')
 
 // model and db config
-const restaurantsModel = require('./models/restaurants')
 require('./config/mongoose')
 
 const app = express()

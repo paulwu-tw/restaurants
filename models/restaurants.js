@@ -35,6 +35,12 @@ const restaurnatSchema = new schema({
     description: {
         type: String,
         required: true
+    },
+    userId: {
+        type: schema.Types.ObjectId,
+        ref: 'users',
+        index: true,
+        required: true
     }
 })
 

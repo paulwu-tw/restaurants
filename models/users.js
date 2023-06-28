@@ -18,12 +18,8 @@ const userSchema = new Schema({
     createdAt: {
         type: Date, 
         default: Date.now
-    },
-    restaurants: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Restaurant'
-    }]
+    }
 });
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('users', userSchema);
 

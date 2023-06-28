@@ -11,7 +11,9 @@ router.get('/new', (req, res) => {
 
 // POST /restaurants
 router.post('/', (req, res) => {
+    const userId = req.user._id
     const info = req.body
+    info.userId = userId
     restaurantsModel.create(info)
         .then(() => res.redirect('/'))
         .catch(err => {
