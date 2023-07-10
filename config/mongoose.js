@@ -14,7 +14,7 @@ mongoose.connect(uri, {
   dbName: 'restaurants',
   auth: {
     username: user,
-    password
+    password: password
   }
 })
 

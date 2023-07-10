@@ -6,6 +6,9 @@ Restaurant list created using node.js, mongodb and framework express.
 
 ## Features
 
+- User Register
+- User login / logout
+- User Facebook login
 - List all restaurants.
 - Show restaurant detail.
 - Search restaurant by name or category.
@@ -26,21 +29,34 @@ Restaurant list created using node.js, mongodb and framework express.
     npm install
 ```
 
-3. Touch a .env file, and config MongoDB connect info below.
+3. Accroding to .env.example file, config required info below.
 ```bash
+    # Mongo db connect info
     MONGODB_URI=<Your own connection string>
     MONGODB_USER=<Username>
     MONGODB_PASSWORD=<Password>
+
+    # Session secret
+    SESSION_SECRET=<YOUR_SESSION_SECRET>
+
+    # Facebook App info
+    FACEBOOK_ID=SKIP
+    FACEBOOK_SECRET=SKIP
 ```
 
 4. Create test data
 ```bash
     npm run seed
 ```
+    seed offer 2 account below
+    ||Name|Email|Password|
+    |:--|:--|:--|:--|
+    |1|user1|user1@example.com|12345678|
+    |2|user2|user2@example.com|12345678|
 
 5. Start server for demo.
 ```bash
-    npm run dev
+    npm run start
 ```
 
 6. While see the message below, open browser and enter the following URL. 
@@ -61,3 +77,8 @@ Restaurant list created using node.js, mongodb and framework express.
 - Express-handlebars: 7.0.7
 - mongoose: 7.1.0
 - dotenv: 16.0.3
+- express-session: 1.17.3
+- passport: 0.6.0
+- passport-local: 1.0.0
+- passport-facebood: 3.0.0
+- bcryptjs: 2.4.3

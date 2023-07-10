@@ -36,9 +36,7 @@ module.exports = app => {
     callbackURL: process.env.FACEBOOK_CALLBACK,
     profileFields: ['email', 'displayName']
   }, (accessToken, refreshToken, profile, done) => {
-    const name = profile._json.name
-    const email = 'tease0623@hotmail' // 寫死 email， 因為跟 facebook 要的 scope，需要經過商家驗證，才能拿到使用者 email
-    // const { name, email } = profile._json
+    const { name, email } = profile._json
     console.log(profile)
 
     User.findOne({ email }).then(user => {

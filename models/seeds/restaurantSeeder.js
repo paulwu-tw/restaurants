@@ -32,6 +32,7 @@ db.once('open', () => {
       }))
       .then(user => {
         const userId = user._id
+        console.log(userId)
         const restaurant = SEED_USER.list.map(index => {
           restaurants[index].userId = userId
           return restaurants[index]
