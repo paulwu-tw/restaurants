@@ -48,9 +48,11 @@ Restaurant list created using node.js, mongodb and framework express.
 ```bash
     npm run seed
 ```
-    seed offer 2 account below
+
+- seed offer 2 account below
+    
     ||Name|Email|Password|
-    |:--|:--|:--|:--|
+    |:--|:--:|:--:|:--:|
     |1|user1|user1@example.com|12345678|
     |2|user2|user2@example.com|12345678|
 
